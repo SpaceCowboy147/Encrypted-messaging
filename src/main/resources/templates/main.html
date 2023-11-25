@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+
+
+    <style>
+    html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+     background: linear-gradient(to right, #262626, #8600b3);
+
+
+    overflow: hidden;
+
+}
+ .header-container {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+
+#menuToggle, #profileCheckbox, #friendsCheckbox, #chatCheckbox, #settingsCheckbox, #logoutCheckbox{
+    display: none;
+}
+
+
+.navBar {
+    display: none;
+
+}
+
+
+#menuToggle:checked + #menu + .navBar,
+ #menu:focus + .navBar {
+   position: fixed;
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    border: 2px solid black;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     width: 50px;
+     height: 85%;
+}
+#profileCheckbox:checked + #person {
+
+}
+.navBar label {
+
+}
+.material-symbols-outlined {
+font-size: 50px;
+float:center
+
+
+}
+
+}
+    </style>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+
+
+
+<h1>Encrypted Messaging</h1>
+
+<input type="checkbox" id="menuToggle">
+<span class="material-symbols-outlined"  id="menu" tabindex="0">
+menu
+</span>
+<div class="navBar">
+    <input type="checkbox" id="profileCheckbox" >
+    <span class="material-symbols-outlined" id="person" tabindex="0">
+person
+</span>
+    <input type="checkbox" id="friendsCheckbox">
+    <span class="material-symbols-outlined"  id="group" tabindex="0">
+group
+</span>
+    <input type="checkbox" id="chatCheckbox">
+    <span class="material-symbols-outlined"  id="chat" tabindex="0">
+chat
+</span>
+    <input type="checkbox" id="settingsCheckbox" >
+    <span class="material-symbols-outlined"  id="settings" tabindex="0">
+settings
+</span>
+    <input type="checkbox" id="logoutCheckbox" >
+    <span class="material-symbols-outlined">
+logout
+</span>
+</div>
+
+<div class="recievedMessages">
+    <label></label>
+</div>
+
+
+</body>
+</html>
