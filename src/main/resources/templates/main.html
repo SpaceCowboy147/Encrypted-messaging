@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -12,11 +12,16 @@
 
 
     <style>
-    html, body {
+
+body, html {
     height: 100%;
     margin: 0;
     padding: 0;
-     background: linear-gradient(to right, #262626, #8600b3);
+}
+    body {
+    background: linear-gradient(to right, #262626, #8600b3);
+    overflow: hidden;
+    height: 100%;
 
 
     overflow: hidden;
@@ -26,48 +31,42 @@
       display: flex;
       align-items: center;
       padding: 10px;
+       background: linear-gradient(to right, #333, #333);
+       border: 2px solid black;
     }
 
-#menuToggle, #profileCheckbox, #friendsCheckbox, #chatCheckbox, #settingsCheckbox, #logoutCheckbox{
-    display: none;
+ .header-container #menuToggle, #profileCheckbox, #friendsCheckbox, #chatCheckbox, #settingsCheckbox, #logoutCheckbox{
+      display: none;
 }
 
 
 .navBar {
-    display: none;
-
-}
-
-
-#menuToggle:checked + #menu + .navBar,
- #menu:focus + .navBar {
-   position: fixed;
-    display: block;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #333;
-    border: 2px solid black;
      display: flex;
+     background-color: #333;
+     border: 2px solid black;
      flex-direction: column;
-     justify-content: space-between;
+     justify-content: space-evenly;
      width: 50px;
-     height: 85%;
-}
-#profileCheckbox:checked + #person {
+     height: 100%;
 
 }
-.navBar label {
+
+
+
+
+#menuToggle:checked + .navBar {
+    display: flex;
+    width: 50px;
+    height: 100%;
 
 }
+
 .material-symbols-outlined {
-font-size: 50px;
-float:center
-
-
-}
+    font-size: 50px;
+    margin: 0 auto;
 
 }
+
     </style>
     <meta charset="UTF-8">
     <title>Main Page</title>
@@ -75,28 +74,30 @@ float:center
 <body>
 
 
-
-<h1>Encrypted Messaging</h1>
-
-<input type="checkbox" id="menuToggle">
-<span class="material-symbols-outlined"  id="menu" tabindex="0">
+<div class="header-container">
+    <input type="checkbox" id="menuToggle">
+<span class="material-symbols-outlined"  id="menu" >
 menu
 </span>
+    <h1>Encrypted Messaging</h1>
+
+</div>
+
 <div class="navBar">
     <input type="checkbox" id="profileCheckbox" >
-    <span class="material-symbols-outlined" id="person" tabindex="0">
+    <span class="material-symbols-outlined" id="person" >
 person
 </span>
     <input type="checkbox" id="friendsCheckbox">
-    <span class="material-symbols-outlined"  id="group" tabindex="0">
+    <span class="material-symbols-outlined"  id="group" >
 group
 </span>
     <input type="checkbox" id="chatCheckbox">
-    <span class="material-symbols-outlined"  id="chat" tabindex="0">
+    <span class="material-symbols-outlined"  id="chat" >
 chat
 </span>
     <input type="checkbox" id="settingsCheckbox" >
-    <span class="material-symbols-outlined"  id="settings" tabindex="0">
+    <span class="material-symbols-outlined"  id="settings" >
 settings
 </span>
     <input type="checkbox" id="logoutCheckbox" >
@@ -105,10 +106,10 @@ logout
 </span>
 </div>
 
-<div class="recievedMessages">
-    <label></label>
-</div>
 
+<div class="receivedMessages">
+
+</div>
 
 </body>
 </html>

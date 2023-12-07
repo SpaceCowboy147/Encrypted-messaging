@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 @SpringBootApplication
 @EnableWebSecurity
 
-@ComponentScan(basePackages = "com.anonymousmessaging.security")
+@ComponentScan(basePackages = "com.anonymousmessaging")
 public class EncryptionApplication {
 
 
