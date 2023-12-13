@@ -3,7 +3,9 @@ package com.anonymousmessaging.users;
 import javax.persistence.*;
 
 @Entity
+@Table(name="users")
 public class Users  {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

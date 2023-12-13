@@ -17,14 +17,13 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
+
 }
     body {
     background: linear-gradient(to right, #262626, #8600b3);
     overflow: hidden;
     height: 100%;
 
-
-    overflow: hidden;
 
 }
  .header-container {
@@ -39,26 +38,23 @@ body, html {
       display: none;
 }
 
-
 .navBar {
-     display: flex;
+
+    display: none;
+     flex-direction: column;
      background-color: #333;
      border: 2px solid black;
-     flex-direction: column;
      justify-content: space-evenly;
      width: 50px;
      height: 100%;
+    border-top: none;
+    margin: 0;
+    padding: 0;
 
 }
 
-
-
-
-#menuToggle:checked + .navBar {
-    display: flex;
-    width: 50px;
-    height: 100%;
-
+ #menuToggle:checked ~ .navBar {
+    display: grid;
 }
 
 .material-symbols-outlined {
@@ -76,40 +72,38 @@ body, html {
 
 <div class="header-container">
     <input type="checkbox" id="menuToggle">
-<span class="material-symbols-outlined"  id="menu" >
-menu
-</span>
+    <label for="menuToggle" class="material-symbols-outlined" id="menu">menu</label>
     <h1>Encrypted Messaging</h1>
-
 </div>
+
 
 <div class="navBar">
     <input type="checkbox" id="profileCheckbox" >
-    <span class="material-symbols-outlined" id="person" >
-person
-</span>
+    <span class="material-symbols-outlined" id="person" >person</span>
     <input type="checkbox" id="friendsCheckbox">
-    <span class="material-symbols-outlined"  id="group" >
-group
-</span>
+    <span class="material-symbols-outlined"  id="group" >group</span>
     <input type="checkbox" id="chatCheckbox">
-    <span class="material-symbols-outlined"  id="chat" >
-chat
-</span>
+    <span class="material-symbols-outlined"  id="chat" >chat</span>
     <input type="checkbox" id="settingsCheckbox" >
-    <span class="material-symbols-outlined"  id="settings" >
-settings
-</span>
+    <span class="material-symbols-outlined"  id="settings" >settings</span>
     <input type="checkbox" id="logoutCheckbox" >
-    <span class="material-symbols-outlined">
-logout
-</span>
+    <span class="material-symbols-outlined">logout</span>
 </div>
+
 
 
 <div class="receivedMessages">
 
 </div>
+<script>
 
+    document.getElementById('menuToggle').addEventListener('change', function() {
+        var navBar = document.querySelector('.navBar');
+        navBar.style.display = this.checked ? 'grid' : 'none';
+    });
+</script>
+
+</body>
+</html>
 </body>
 </html>

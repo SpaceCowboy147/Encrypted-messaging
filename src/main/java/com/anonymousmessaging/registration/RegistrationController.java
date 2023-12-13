@@ -1,22 +1,18 @@
 package com.anonymousmessaging.registration;
 
-import com.anonymousmessaging.users.UserAuthorities;
-import com.anonymousmessaging.users.UserRepository;
 import com.anonymousmessaging.users.UserService;
-import com.anonymousmessaging.users.Users;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class RegistrationController {
-@Autowired
-    UserRepository userRepository;
-@Autowired
+
+
+
+    @Autowired
     UserService userService;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -29,6 +25,7 @@ public class RegistrationController {
 
         try {
             userService.registerNewUser(username, password);
+            System.out.println(username + password);
         } catch (Exception e) {
             e.printStackTrace();
         }

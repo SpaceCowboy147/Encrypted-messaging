@@ -1,18 +1,24 @@
 package com.anonymousmessaging.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 @Service
 public class UserService  {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+
+    private final UserRepository userRepository;
     @Autowired
-    private UserRepository userRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+
+    //  public UserService(UserRepository userRepository) {
+       // this.userRepository = userRepository;
+
 
     public void registerNewUser(String username, String password) {
 
@@ -23,7 +29,7 @@ public class UserService  {
         user.setEnabled(true);
         userRepository.save(user);
 
-
+System.out.println(username + password);
     }
 
 
