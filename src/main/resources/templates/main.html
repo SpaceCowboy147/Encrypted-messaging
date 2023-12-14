@@ -50,11 +50,16 @@ body, html {
     border-top: none;
     margin: 0;
     padding: 0;
+  transition: max-height 3s ease;
 
 }
+  a {
+        color: black;
+    }
 
  #menuToggle:checked ~ .navBar {
     display: grid;
+
 }
 
 .material-symbols-outlined {
@@ -62,6 +67,7 @@ body, html {
     margin: 0 auto;
 
 }
+
 
     </style>
     <meta charset="UTF-8">
@@ -71,37 +77,37 @@ body, html {
 
 
 <div class="header-container">
-    <input type="checkbox" id="menuToggle">
+    <input  type="checkbox" id="menuToggle">
     <label for="menuToggle" class="material-symbols-outlined" id="menu">menu</label>
     <h1>Encrypted Messaging</h1>
 </div>
 
 
 <div class="navBar">
-    <input type="checkbox" id="profileCheckbox" >
-    <span class="material-symbols-outlined" id="person" >person</span>
-    <input type="checkbox" id="friendsCheckbox">
-    <span class="material-symbols-outlined"  id="group" >group</span>
-    <input type="checkbox" id="chatCheckbox">
-    <span class="material-symbols-outlined"  id="chat" >chat</span>
-    <input type="checkbox" id="settingsCheckbox" >
-    <span class="material-symbols-outlined"  id="settings" >settings</span>
-    <input type="checkbox" id="logoutCheckbox" >
-    <span class="material-symbols-outlined">logout</span>
+    <a href="user/profile"><input type="checkbox" id="profileCheckbox" >
+        <span class="material-symbols-outlined" id="person" >person</span></a>
+    <a href="user/group"><input type="checkbox" id="friendsCheckbox">
+    <span class="material-symbols-outlined"  id="group" >group</span></a>
+        <a href="user/chat"><input type="checkbox" id="chatCheckbox">
+    <span class="material-symbols-outlined"  id="chat" >chat</span></a>
+            <a href="user/settings"><input type="checkbox" id="settingsCheckbox" >
+    <span class="material-symbols-outlined"  id="settings" >settings</span></a>
+                <a href="user/logout"><input type="checkbox" id="logoutCheckbox" >
+    <span class="material-symbols-outlined">logout</span></a>
 </div>
 
-
-
-<div class="receivedMessages">
-
-</div>
 <script>
 
     document.getElementById('menuToggle').addEventListener('change', function() {
         var navBar = document.querySelector('.navBar');
         navBar.style.display = this.checked ? 'grid' : 'none';
     });
+
 </script>
+
+<div class="receivedMessages">
+
+</div>
 
 </body>
 </html>
