@@ -3,11 +3,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
 
 
@@ -50,7 +45,10 @@ body, html {
     border-top: none;
     margin: 0;
     padding: 0;
-  transition: max-height 3s ease;
+ position: fixed;
+
+            left: 0;
+            z-index: 1;
 
 }
   a {
@@ -59,14 +57,20 @@ body, html {
 
  #menuToggle:checked ~ .navBar {
     display: grid;
-
+  position: static;
 }
+
+
 
 .material-symbols-outlined {
     font-size: 50px;
-    margin: 0 auto;
-
+    text-align: center;
+    display: block; /* Make the span a block-level element */
+    margin: 0 auto; /* Center the block-level element horizontally */
 }
+
+
+
 
 
     </style>
@@ -84,15 +88,15 @@ body, html {
 
 
 <div class="navBar">
-    <a href="user/profile"><input type="checkbox" id="profileCheckbox" >
+    <a href="/user/profile"><input type="checkbox" id="profileCheckbox" >
         <span class="material-symbols-outlined" id="person" >person</span></a>
-    <a href="user/group"><input type="checkbox" id="friendsCheckbox">
+    <a href="/user/group"><input type="checkbox" id="friendsCheckbox">
     <span class="material-symbols-outlined"  id="group" >group</span></a>
-        <a href="user/chat"><input type="checkbox" id="chatCheckbox">
+        <a href="/user/messages"><input type="checkbox" id="chatCheckbox">
     <span class="material-symbols-outlined"  id="chat" >chat</span></a>
-            <a href="user/settings"><input type="checkbox" id="settingsCheckbox" >
+            <a href="/user/settings"><input type="checkbox" id="settingsCheckbox" >
     <span class="material-symbols-outlined"  id="settings" >settings</span></a>
-                <a href="user/logout"><input type="checkbox" id="logoutCheckbox" >
+                <a href="/user/logout"><input type="checkbox" id="logoutCheckbox" >
     <span class="material-symbols-outlined">logout</span></a>
 </div>
 
@@ -109,7 +113,5 @@ body, html {
 
 </div>
 
-</body>
-</html>
 </body>
 </html>

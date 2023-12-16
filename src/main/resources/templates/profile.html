@@ -1,10 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+    body {
+    background: linear-gradient(to right, #262626, #333);
+    overflow: hidden;
+    height: 100%;
+
+
+}
+ .header-container {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+       background: linear-gradient(to right, #333, #333);
+       border: 2px solid black;
+
+    }
+
+ .header-container #backButton{
+      display: none;
+}
+
+
+h1 {
+text-align: center;
+}
+.material-symbols-outlined {
+    font-size: 50px;
+text-align: center;
+}
+    </style>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>profile</title>
 </head>
 <body>
 
+
+<form id="backButtonForm" th:action="@{/user/backButton}" method="post">
+    <div class="header-container">
+        <input type="checkbox" id="backButton" name="backButton" onclick="submitForm()">
+        <label for="backButton" class="material-symbols-outlined">arrow_back</label>
+    </div>
+</form>
+
+<script>
+    function submitForm() {
+        document.getElementById("backButtonForm").submit();
+    }
+</script>
+<div>
+<h1>Profile
+<span class="material-symbols-outlined">
+account_circle
+</span>
+</h1>
+<label>About</label>
+    <input type="text">
+
+</div>
 </body>
 </html>

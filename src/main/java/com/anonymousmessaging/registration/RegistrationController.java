@@ -1,4 +1,4 @@
-package com.anonymousmessaging.security.registration;
+package com.anonymousmessaging.registration;
 
 import com.anonymousmessaging.users.UserRepository;
 import com.anonymousmessaging.users.UserService;
@@ -14,13 +14,14 @@ public class RegistrationController {
 
 
 
+    private final UserService userService;
+    private final BCryptPasswordEncoder passwordEncoder;
+
     @Autowired
-    private UserService userService;
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
-
-
-
+    public RegistrationController(UserService userService, BCryptPasswordEncoder passwordEncoder) {
+        this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+    }
     @PostMapping("/registration/registerUser")
 
         public void registerUser(@RequestParam("username") String username ,

@@ -26,21 +26,11 @@ public class LoginController {
         return "login"; }
 
 
-    @GetMapping("/dashboard")
-    public String redirectToDashboard(Authentication authentication) {
-        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-
-        if (authorities.stream().anyMatch(a -> a.getAuthority().equals("USER"))) {
-            return "redirect:/main";
-        } else if (authorities.stream().anyMatch(a -> a.getAuthority().equals("admin"))) {
-            return "redirect:/admin";
-        } else {
-            throw new IllegalStateException("Unknown user role");
-        }
-    }
-
-
-
 
     }
+
+
+
+
+
 

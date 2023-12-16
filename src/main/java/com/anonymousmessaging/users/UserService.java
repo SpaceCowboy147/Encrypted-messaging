@@ -2,17 +2,22 @@ package com.anonymousmessaging.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
+
 public class UserService  {
+
+    @Autowired JdbcTemplate jdbcTemplate;
+    private final BCryptPasswordEncoder passwordEncoder;
+
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
+    public UserService(BCryptPasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
+
+
     public void registerNewUser(String username, String password) {
 
         Users user = new Users();
@@ -26,7 +31,37 @@ public class UserService  {
     }
 
 
-    public String findByUserName(String username) {
-        return username;
+    public Users findByUserName(String username) {
+        Users user = new Users();
+        user.setUsername(username);
+
+        String findUser = "SELECT * FROM users where username = ?";
+        return jdbcTemplate.queryForObject(findUser, new Object[]{username}, new UserRowMapper());
     }
+
+
+
+        public void deleteByID(int id) {
+            String deleteAccount = "DELETE FROM users WHERE id = ?";
+            jdbcTemplate.update(deleteAccount, id);
+    }
+
+
+
+    public int updateUsername(int userId, String newUsername) {
+        String  updateUsername = "UPDATE users SET username = ? where id = ?";
+        return jdbcTemplate.update( updateUsername, newUsername, userId);
+    }
+
+
+
+    public int updatePassword(String newPassword, int userId) {
+        String updatePassword =  "UPDATE users SET password = ? where id = ?";
+
+        return jdbcTemplate.update(updatePassword, newPassword, userId);
+    }
+
+
+
+
 }

@@ -7,9 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
-@SpringBootApplication(scanBasePackages = "com.anonymousmessaging.*, com.anonymousmessaging.users.UserRepository")
-@EntityScan("com.anonymousmessaging.*")
-@ComponentScan("com.anonymousmessaging.*")
+@SpringBootApplication(scanBasePackages = "com.anonymousmessaging.*")
+
 public class EncryptionApplication {
 
 	public static void main(String[] args) {
