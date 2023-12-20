@@ -26,8 +26,13 @@ public class LoginController {
         return "login"; }
 
 
-
+    @GetMapping("/registration")
+    public String showRegistration() {
+        return "registration";    }
     }
+
+
+
 
 
 

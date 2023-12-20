@@ -40,9 +40,10 @@ text-align: center;
 }
  .accountSettings {
  display:grid;
+
  text-align:center;
  justify-content: space-evenly;
- gap: 20px;
+ gap: 50px;
         }
 
     </style>
@@ -70,10 +71,18 @@ text-align: center;
 </div>
 
 <div class = "accountSettings">
-    <label>Change Username</label><input type="text"><button type="submit">Submit</button>
-    <label>  Change Password</label><input type="text"><button type="submit">Submit</button>
-    <button type="submit">Delete Account</button>
-
+    <form action="/user/changeUsername" method="post">
+        <p>  <label>Change Username</label><input type="text" name="username"></p><button type="submit">Submit</button>
+    </form>
+    <form action="/user/changePassword" method="post">
+   <p><label> Change Password</label><input type="text" name="password"></p>
+       <p> <label>Confirm Password</label><input type="text"></p><button type="submit">Submit</button></form>
+    <form action="/user/deleteAccount" method="post">
+    <button type="submit" name="/user/deleteAccount">Delete Account</button>
+    </form>
+    <form action="/user/changeBackground" method="post">
+        <p><label></label></p>
+    </form>
 
 </div>
 

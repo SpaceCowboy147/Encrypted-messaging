@@ -1,6 +1,7 @@
 package com.anonymousmessaging.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,33 +33,35 @@ public class UserService  {
 
 
     public Users findByUserName(String username) {
-        Users user = new Users();
-        user.setUsername(username);
+        try {
+            String findUser = "SELECT * FROM users where username = ?";
+            return jdbcTemplate.queryForObject(findUser, new Object[]{username}, new UserRowMapper());
+        } catch (
+                EmptyResultDataAccessException e) {
+            return null;
+        }
 
-        String findUser = "SELECT * FROM users where username = ?";
-        return jdbcTemplate.queryForObject(findUser, new Object[]{username}, new UserRowMapper());
     }
-
-
-
         public void deleteByID(int id) {
             String deleteAccount = "DELETE FROM users WHERE id = ?";
             jdbcTemplate.update(deleteAccount, id);
+            Users users = new Users();
+            users.setId(id);
+
     }
-
-
-
-    public int updateUsername(int userId, String newUsername) {
+    public int findUserIdByUsername(String username) {
+        String sql = "SELECT id from users where username = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, username);
+    }
+    public void updateUsername(int userId, String newUsername) {
         String  updateUsername = "UPDATE users SET username = ? where id = ?";
-        return jdbcTemplate.update( updateUsername, newUsername, userId);
+        jdbcTemplate.update(updateUsername, newUsername, userId);
     }
 
-
-
-    public int updatePassword(String newPassword, int userId) {
+    public void updatePassword(int userId, String newPassword) {
         String updatePassword =  "UPDATE users SET password = ? where id = ?";
 
-        return jdbcTemplate.update(updatePassword, newPassword, userId);
+        jdbcTemplate.update(updatePassword, newPassword, userId);
     }
 
 
