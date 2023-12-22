@@ -36,6 +36,17 @@ body, html {
 h1 {
 text-align: center;
 }
+
+.addAndDeleteUserIcons{
+display:grid;
+ gap: 15px;
+position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+.groupSection  .material-symbols-outlined {
+font-size: 75px;
+}
     </style>
     <meta charset="UTF-8">
     <title>Group</title>
@@ -53,9 +64,39 @@ text-align: center;
         document.getElementById("backButtonForm").submit();
     }
 </script>
-<div>
+
+<div class ="groupSection">
+
+    <div class="searchForUser">
+        <form action="/user/searchUser" method="post">
+        <label>Search for user</label>
+        <input type="search">
+        </form>
+    </div>
+
+    <div class="deleteUserFromGroup">
+        <form action="/user/searchUser" method="post">
+            <label>Search for user</label>
+            <input type="checkbox">
+        </form>
+    </div>
+
     <h1>Group</h1>
 
+    <div class="addAndDeleteUserIcons">
+    <span class="material-symbols-outlined">
+person_add
+</span>
+    <span class="material-symbols-outlined">
+person_remove
+</span>
 </div>
+
+    <div class="friendBox">
+        <div class="product-box" th:each="friend : ${group}">
+    </div>
+    </div>
+</div>
+
 </body>
 </html>

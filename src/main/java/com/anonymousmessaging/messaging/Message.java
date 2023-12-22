@@ -1,10 +1,21 @@
 package com.anonymousmessaging.messaging;
 
+import java.sql.Date;
+
 public class Message {
     private String content;
     private String sender;
-    private String dateAndTime;
+    private Date dateAndTime;
 
+    public int getSentToUserId() {
+        return sentToUserId;
+    }
+
+    public void setSentToUserId(int sentToUserId) {
+        this.sentToUserId = sentToUserId;
+    }
+
+    private int sentToUserId;
     public String getContent() {
         return content;
     }
@@ -21,11 +32,11 @@ public class Message {
         this.sender = sender;
     }
 
-    public String getDateAndTime() {
+    public Date getDateAndTime() {
         return dateAndTime;
     }
 
-    public void setDateAndTime(String dateAndTime) {
+    public void setDateAndTime(Date dateAndTime) {
         this.dateAndTime = dateAndTime;
     }
 

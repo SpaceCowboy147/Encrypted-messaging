@@ -53,6 +53,10 @@ public class UserService  {
         String sql = "SELECT id from users where username = ?";
         return jdbcTemplate.queryForObject(sql, Integer.class, username);
     }
+    public int findUsernameById(int username) {
+        String sql = "SELECT id from users where username = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, username);
+    }
     public void updateUsername(int userId, String newUsername) {
         String  updateUsername = "UPDATE users SET username = ? where id = ?";
         jdbcTemplate.update(updateUsername, newUsername, userId);
