@@ -1,7 +1,5 @@
 package com.anonymousmessaging.group;
 
-import java.sql.Date;
-
 public class Group {
     private int id;
 

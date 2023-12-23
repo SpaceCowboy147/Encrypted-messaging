@@ -47,6 +47,9 @@ position: fixed;
 .groupSection  .material-symbols-outlined {
 font-size: 75px;
 }
+.searchForUser, .deleteUserFromGroup{
+  display: none;
+}
     </style>
     <meta charset="UTF-8">
     <title>Group</title>
@@ -66,31 +69,53 @@ font-size: 75px;
 </script>
 
 <div class ="groupSection">
+    <h1>Group</h1>
 
     <div class="searchForUser">
         <form action="/user/searchUser" method="post">
         <label>Search for user</label>
-        <input type="search">
+        <input type="search" name="searchUsername">
         </form>
     </div>
 
     <div class="deleteUserFromGroup">
-        <form action="/user/searchUser" method="post">
-            <label>Search for user</label>
+        <form action="/user/deleteUser" method="post">
+            <label>Delete user</label>
             <input type="checkbox">
         </form>
     </div>
 
-    <h1>Group</h1>
 
     <div class="addAndDeleteUserIcons">
+        <div class="addUserIcon">
+            <input type="checkbox" id="profileCheckbox">
     <span class="material-symbols-outlined">
 person_add
 </span>
+        </div>
+        <div class="deleteUserIcon">
+           <input type="checkbox" id="deleteUserCheckbox" >
     <span class="material-symbols-outlined">
 person_remove
 </span>
+        </div>
 </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const profileCheckbox = document.getElementById('profileCheckbox');
+        const deleteUserCheckbox = document.getElementById('deleteUserCheckbox');
+        const searchForUser = document.querySelector('.searchForUser');
+        const deleteUserFromGroup = document.querySelector('.deleteUserFromGroup');
+
+        profileCheckbox.addEventListener('change', function () {
+            searchForUser.style.display = profileCheckbox.checked ? 'block' : 'none';
+        });
+
+        deleteUserCheckbox.addEventListener('change', function () {
+            deleteUserFromGroup.style.display = deleteUserCheckbox.checked ? 'block' : 'none';
+        });
+    });
+</script>
 
     <div class="friendBox">
         <div class="product-box" th:each="friend : ${group}">
