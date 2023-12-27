@@ -75,6 +75,14 @@ font-size: 75px;
         <form action="/user/searchUser" method="post">
         <label>Search for user</label>
         <input type="search" name="searchUsername">
+
+                <div th:each="user : ${searchUser}" th:value="${user.username}" th:text="${user.username}"></div>
+
+
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
         </form>
     </div>
 

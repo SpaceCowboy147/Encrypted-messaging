@@ -3,10 +3,7 @@ package com.anonymousmessaging.userController;
 import com.anonymousmessaging.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -29,7 +26,7 @@ UserService userService;
             e.printStackTrace();
         }
     }
-    @PostMapping("/changePassword")
+    @GetMapping("/changePassword")
     public void changePassword(@RequestParam("password") String newPassword,
                                Principal principal) {
         String currentUser = principal.getName();

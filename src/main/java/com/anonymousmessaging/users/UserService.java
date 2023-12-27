@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 
 public class UserService  {
@@ -32,10 +34,10 @@ public class UserService  {
     }
 
 
-    public Users findByUserName(String username) {
+    public List<Users> findByUserName(String username) {
         try {
             String findUser = "SELECT * FROM users where username = ?";
-            return jdbcTemplate.queryForObject(findUser, new Object[]{username}, new UserRowMapper());
+            return jdbcTemplate.query(findUser, new Object[]{username}, new UserRowMapper());
         } catch (
                 EmptyResultDataAccessException e) {
             return null;
