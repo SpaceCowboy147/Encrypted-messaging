@@ -17,27 +17,31 @@ public class GroupController {
     UserService userService;
     GroupService groupService;
     @Autowired
-    public GroupController(UserService userService) {
+    public GroupController(UserService userService, GroupService groupService) {
         this.userService = userService;
+        this.groupService = groupService;
 
     }
     @PostMapping("/addUser")
-    public void addUser(@RequestParam("friendUsername") String friendUsername,
+    public String addUser(@RequestParam("selectedUsername") String friendUsername,
                         Principal principal) {
 
         String username = principal.getName();
         int userId = userService.findUserIdByUsername(username);
         int friendId = userService.findUserIdByUsername(friendUsername);
         groupService.addUser(userId, friendId);
+        return "group";
     }
 
     @PostMapping("/deleteUser")
-    public void deleteUser(@RequestParam("friendUsername") String friendUsername,
+    @ResponseBody
+    public String deleteUser(@RequestParam("friendUsername") String friendUsername,
                            Principal principal) {
         String username = principal.getName();
         int userId = userService.findUserIdByUsername(username);
         int friendId = userService.findUserIdByUsername(friendUsername);
         groupService.deleteUser(userId, friendId);
+        return "added" + friendUsername;
     }
 
 
@@ -49,7 +53,8 @@ public class GroupController {
          List<Users> searchedUser = userService.findByUserName(username);
          model.addAttribute("searchUser", searchedUser);
          return "group";
-        //TODO display names on group page on dropdown.
+        //TODO display name suggestions with a dropdown.
+
 
     }
 }

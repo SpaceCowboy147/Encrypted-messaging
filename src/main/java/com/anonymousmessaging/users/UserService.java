@@ -2,6 +2,7 @@ package com.anonymousmessaging.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,14 @@ public class UserService  {
         this.passwordEncoder = passwordEncoder;
     }
 
+    public List<Users> getAllUsers() {
+        try {
+            String getAllUsersSql = ("SELECT * FROM users");
+            return jdbcTemplate.query(getAllUsersSql, new UserRowMapper());
+        } catch (IncorrectResultSizeDataAccessException e) {
+            return null;
+        }
+    }
 
     public void registerNewUser(String username, String password) {
 

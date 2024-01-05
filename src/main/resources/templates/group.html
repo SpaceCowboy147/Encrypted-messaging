@@ -47,12 +47,46 @@ position: fixed;
 .groupSection  .material-symbols-outlined {
 font-size: 75px;
 }
-.searchForUser, .deleteUserFromGroup{
+.searchUserResults, .deleteUserFromGroup{
   display: none;
 }
+
+.suggestedUsersContainer{
+  position: relative;
+  display: inline-block;
+}
+.suggestedUsersContainer {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.suggestedUsersContainer-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.suggestedUsersContainer-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+
+
+
     </style>
     <meta charset="UTF-8">
     <title>Group</title>
+
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
 </head>
 <body>
 <form id="backButtonForm" th:action="@{/user/backButton}" method="post">
@@ -71,19 +105,46 @@ font-size: 75px;
 <div class ="groupSection">
     <h1>Group</h1>
 
-    <div class="searchForUser">
-        <form action="/user/searchUser" method="post">
-        <label>Search for user</label>
-        <input type="search" name="searchUsername">
-
-                <div th:each="user : ${searchUser}" th:value="${user.username}" th:text="${user.username}"></div>
 
 
-            <button type="submit">Search</button>
-        </form>
-    </div>
+            <div class="searchUserContainer">
+                <div class="searchUserResults">
 
-        </form>
+                    <form action="/user/searchUsername" method="post" style="display: inline;">
+<!--                        <input class ="selectUser" type="text" name="searchUsername"  placeholder="Search User">-->
+                        <select id="user" class="selectUser" th:field="*{selectedUserId}">
+                            <option value="" th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+                        </select>
+                        <button type="submit">View Profile</button>
+                    </form>
+                    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js"></script>
+
+                    <script>
+    $(".selectUser").select2({
+        theme: "bootstrap4",
+        minimumInputLength: 1,
+         language: {
+        inputTooShort: function () {
+            return "";
+        }
+    }
+    });
+
+</script>
+
+
+
+                    <form action="/user/addUser" method="post" style="display: inline;">
+                        <button type="submit">Add friend</button>
+                    </form>
+                </div>
+            </div>
     </div>
 
     <div class="deleteUserFromGroup">
@@ -112,7 +173,7 @@ person_remove
     document.addEventListener('DOMContentLoaded', function () {
         const profileCheckbox = document.getElementById('profileCheckbox');
         const deleteUserCheckbox = document.getElementById('deleteUserCheckbox');
-        const searchForUser = document.querySelector('.searchForUser');
+        const searchForUser = document.querySelector('.searchUserResults');
         const deleteUserFromGroup = document.querySelector('.deleteUserFromGroup');
 
         profileCheckbox.addEventListener('change', function () {
@@ -127,6 +188,7 @@ person_remove
 
     <div class="friendBox">
         <div class="product-box" th:each="friend : ${group}">
+            <div th:text="${friend.id}" class="value"></div>
     </div>
     </div>
 </div>
